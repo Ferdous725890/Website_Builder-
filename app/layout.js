@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           <AuthProvider>
             <Navbar></Navbar>
             
-          <div className="h-[calc(100vh-8rem)]">
+          <div className="min-h-[calc(100vh-8rem)]">
           {children}
           </div>
           <Footer></Footer>
