@@ -1,5 +1,6 @@
 "use client";
 import {
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
@@ -23,10 +24,15 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  const createUser = (email, password) => {
+    dispatch(setLoading(true));
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
   const authInfo = {
     user,
     loading,
     googleSignIn,
+    createUser,
   };
 
   useEffect(() => {
