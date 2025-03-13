@@ -3,27 +3,32 @@
 import { useAuth } from "@/app/hooks/useAuth";
 import Link from "next/link";
 import "./signup.css";
-import { FiEye } from "react-icons/fi";
+import { FiArrowRight, FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
 
-  const { googleSignIn } = useAuth();
-  console.log(googleSignIn);
+  const { googleSignIn, createUser } = useAuth();
+
   const handleGoogleSignIn = () => {
     googleSignIn();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.table(email, password);
+    try {
+      createUser(email, password);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
-    <div className="text-center  mt-10 space-y-4 px-6 lg:max-w-lg lg:mx-auto lg:space-y-10">
+    <div className="text-center  mt-10 space-y-4 px-6 sm:max-w-lg sm:mx-auto sm:space-y-10 ">
       <h3 className="text-3xl font-bold leading-10 lg:text-4xl">
         Let's create your BuildMaster Account.
       </h3>
@@ -54,6 +59,7 @@ const SignUP = () => {
               placeholder=" "
             />
             <button
+              type="button"
               onClick={() => setShowPass(!showPass)}
               className="cursor-pointer absolute right-4 top-4"
             >
@@ -65,9 +71,12 @@ const SignUP = () => {
           </div>
           <button
             type="submit"
-            className="border border-gray-200 py-3 cursor-pointer text-white bg-black/80 rounded-sm"
+            className="group border flex items-center justify-center gap-2 border-gray-200 py-3 cursor-pointer text-white bg-black/80 rounded-sm"
           >
-            Sign Up
+            <span>Sign up</span>
+            <span className="opacity-0 translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 border border-gray-200 rounded-full p-0.5">
+              <FiArrowRight />
+            </span>
           </button>
         </form>
       </div>
@@ -86,7 +95,7 @@ const SignUP = () => {
       </div>
       <button
         onClick={handleGoogleSignIn}
-        className="border border-gray-200 rounded-sm  w-full py-2 cursor-pointer"
+        className="border border-gray-200 hover:bg-gray-50 active:scale-80 transition-all duration-200 rounded-sm  w-full py-2 cursor-pointer"
       >
         <div className="flex items-center justify-center gap-4">
           <img src="/google.png" height={30} width={30} />

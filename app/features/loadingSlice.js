@@ -6,7 +6,6 @@ export const loadingSlice = createSlice({
   initialState,
   reducers: {
     setLoading: (state, action) => {
-      console.log(action);
       return action.payload;
     },
   },
