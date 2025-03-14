@@ -66,7 +66,7 @@ const Navbar = async () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <h1 className="mr-5 text-black">logIn</h1>
+          <h1 className="mr-5 text-black">LogIn</h1>
           <a className="bg-[#FFA8EE] py-2 px-3 text-black">Get Started</a>
         </div>
       </div>

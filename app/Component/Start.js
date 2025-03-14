@@ -2,7 +2,7 @@ import React from "react";
 
 const Start = () => {
   return (
-    <div className="container mx-auto w-11/12 border">
+    <div className="container mx-auto w-11/12 ">
     <div className="w-[500px broder ]">
     <div className="stats shadow  grid text-center mt-10 ">
         <div className="stat">

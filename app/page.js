@@ -2,10 +2,13 @@ import Image from "next/image";
 import GetStated from "./Component/GetStated";
 import Category from "./Component/Category";
 import Start from "./Component/Start";
+import AiTools from "./Component/AiTools";
+import AllTools from "./Component/AnytypeSite";
+import AytypeSite from "./Component/AnytypeSite";
 
 export default function Home() {
   return (
-    <div className="bg-[#FCCAF2] pt-20 bg-gradient-to-t from-[#ece1e9] to-[#FCCAF2]">
+    <div className="bg-[#FCCAF2] pt-20 bg-gradient-to-t from-[#ece1e9] to-[#FCCAF2] pb-56">
       {/* -----------------banner section--------- */}
       <div className="container mx-auto w-11/12">
         <div></div>
@@ -20,8 +23,11 @@ export default function Home() {
 
           <GetStated></GetStated>
           <Category></Category>
-
           <Start></Start>
+
+          <AiTools></AiTools>
+
+          <AytypeSite></AytypeSite>
         </div>
 
         <div> </div>

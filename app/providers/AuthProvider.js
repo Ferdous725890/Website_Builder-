@@ -43,7 +43,8 @@ const AuthProvider = ({ children }) => {
       dispatch(setLoading(false));
     });
     return () => unSubscribe();
-  }, [currentUserInStore?.email]);
+  }, []);
+  // currentUserInStore?.email
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

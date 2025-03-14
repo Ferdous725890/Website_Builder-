@@ -6,6 +6,7 @@ import "./signup.css";
 import { FiArrowRight, FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
+import Image from "next/image";
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
 
@@ -30,7 +31,7 @@ const SignUP = () => {
   return (
     <div className="text-center  mt-10 space-y-4 px-6 sm:max-w-lg sm:mx-auto sm:space-y-10 ">
       <h3 className="text-3xl font-bold leading-10 lg:text-4xl">
-        Let's create your BuildMaster Account.
+        Let s create your BuildMaster Account.
       </h3>
       <p className="text-gray-700  text-xl">
         Join our community and start building your dream website without any
@@ -98,7 +99,7 @@ const SignUP = () => {
         className="border border-gray-200 hover:bg-gray-50 active:scale-80 transition-all duration-200 rounded-sm  w-full py-2 cursor-pointer"
       >
         <div className="flex items-center justify-center gap-4">
-          <img src="/google.png" height={30} width={30} />
+          <Image src="/google.png" height={30} width={30} alt="google" />
           <span className="text-lg font-medium text-gray-700">
             Continue with google
           </span>
