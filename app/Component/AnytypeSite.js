@@ -27,15 +27,21 @@ const AytypeSite = () => {
             />
           </div>
           <div className="text-black p-5 flex flex-col justify-center">
-        <h2 className="text-6xl">    Dream it. Build it.</h2>
+            <h2 className="text-6xl"> Dream it. Build it.</h2>
             <p className="text-gray-500 mt-7">
               Drag & Drop Editing Build perfectly designed websites with
               all-encompassing drag & drop tools that include powerful styling
               options to create exactly what you want.
             </p>
-            <p className="mt-5 underline hover:text-blue-500">Unlimited Creativity </p>
-            <p className="mt-5 underline hover:text-blue-500">Responsive Design </p>
-            <p className="mt-5 underline hover:text-blue-500">Dynamic Elements</p>
+            <p className="mt-5 underline hover:text-blue-500">
+              Unlimited Creativity{" "}
+            </p>
+            <p className="mt-5 underline hover:text-blue-500">
+              Responsive Design{" "}
+            </p>
+            <p className="mt-5 underline hover:text-blue-500">
+              Dynamic Elements
+            </p>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Navbar = async () => {
@@ -46,7 +47,9 @@ const Navbar = async () => {
               </li>
             </ul>
           </div>
-          <a className="text-black text-xl ">BuildMaster</a>
+          <Link href="/" className="text-black text-xl ">
+            BuildMaster
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-black">
@@ -66,8 +69,12 @@ const Navbar = async () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <h1 className="mr-5 text-black">LogIn</h1>
-          <a className="bg-[#FFA8EE] py-2 px-3 text-black">Get Started</a>
+          <Link href="/sign-in" className="mr-5 text-black">
+            LogIn
+          </Link>
+          <Link href="/sign-up" className="bg-[#FFA8EE] py-2 px-3 text-black">
+            Get Started
+          </Link>
         </div>
       </div>
     </div>
