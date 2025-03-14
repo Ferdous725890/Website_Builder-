@@ -10,7 +10,7 @@ import Image from "next/image";
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
 
-  const { googleSignIn, createUser } = useAuth();
+  const { googleSignIn, createUser, updateUserProfile } = useAuth();
 
   const handleGoogleSignIn = () => {
     googleSignIn();
@@ -21,9 +21,12 @@ const SignUP = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.table(email, password);
+    const name = form.name.value;
+
+    console.table(email, name);
     try {
-      createUser(email, password);
+      await createUser(email, password);
+      await updateUserProfile(name);
     } catch (err) {
       console.log(err);
     }
@@ -39,6 +42,18 @@ const SignUP = () => {
       </p>
       <div>
         <form onSubmit={handleSubmit} className="space-y-6 text-left grid">
+          <div className="relative">
+            <input
+              name="name"
+              required
+              type="text"
+              className="border border-gray-200 w-full pt-4 pb-2 px-4 outline-none rounded-sm"
+              placeholder=" "
+            />
+            <label className="absolute top-1/2 left-4 -translate-y-1/2 transition-all duration-200 pointer-events-none text-gray-400">
+              Name
+            </label>
+          </div>
           <div className="relative">
             <input
               name="email"

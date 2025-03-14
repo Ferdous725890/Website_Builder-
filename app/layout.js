@@ -22,19 +22,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ReduxProvider>
           <AuthProvider>
             <Navbar></Navbar>
-            
-          <div className="min-h-[calc(100vh-8rem)] h-full">
-          {children}
-          </div>
-          <Footer></Footer>
-            </AuthProvider>
+
+            <div className="min-h-[calc(100vh-8rem)] h-full">{children}</div>
+            <Footer></Footer>
+          </AuthProvider>
         </ReduxProvider>
       </body>
     </html>
