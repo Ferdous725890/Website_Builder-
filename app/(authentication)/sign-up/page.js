@@ -6,13 +6,11 @@ import "./signup.css";
 import { FiArrowRight, FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
-import Swal from "sweetalert2";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
-  const [error,setError] = useState("")
+const [error,setError] = useState("")
   const { googleSignIn, createUser } = useAuth();
-  const router = useRouter();
 
   const handleGoogleSignIn = () => {
     googleSignIn();
@@ -23,29 +21,9 @@ const SignUP = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    // console.table(email, password);
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z\d@$#!%*?&]{6,}$/;
-
-    if (!passwordRegex.test(password)) {
-      return setError(
-        "Password atleast 1 lowercase letter 1 uppercase letter 1 number 1 special characters and atleast 6 characters"
-      );
-      
-    } 
+    console.table(email, password);
     try {
-      const res = await createUser(email, password)
-      const data = res.user
-      if(data){
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Sign Up Successfully",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        router.push("/")
-      }
+      createUser(email, password);
     } catch (err) {
       Swal.fire({
         position: "top-center",
@@ -68,6 +46,18 @@ const SignUP = () => {
       </p>
       <div>
         <form onSubmit={handleSubmit} className="space-y-6 text-left grid">
+          <div className="relative">
+            <input
+              name="name"
+              required
+              type="text"
+              className="border border-gray-200 w-full pt-4 pb-2 px-4 outline-none rounded-sm"
+              placeholder=" "
+            />
+            <label className="absolute top-1/2 left-4 -translate-y-1/2 transition-all duration-200 pointer-events-none text-gray-400">
+              Name
+            </label>
+          </div>
           <div className="relative">
             <input
               name="email"
@@ -129,7 +119,7 @@ const SignUP = () => {
         className="border border-gray-200 hover:bg-gray-50 active:scale-80 transition-all duration-200 rounded-sm  w-full py-2 cursor-pointer"
       >
         <div className="flex items-center justify-center gap-4">
-          <img src="/google.png" height={30} width={30} />
+          <Image src="/google.png" height={30} width={30} alt="google" />
           <span className="text-lg font-medium text-gray-700">
             Continue with google
           </span>

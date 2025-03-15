@@ -1,0 +1,6 @@
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+  top: 0;
+  background-color: white;
+  padding-inline: 0.9rem;
+}
