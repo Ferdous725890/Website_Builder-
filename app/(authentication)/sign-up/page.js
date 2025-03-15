@@ -10,7 +10,7 @@ import Image from "next/image";
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
 const [error,setError] = useState("")
-  const { googleSignIn, createUser } = useAuth();
+  const { googleSignIn, createUser, updateUserProfile } = useAuth();
 
   const handleGoogleSignIn = () => {
     googleSignIn();
@@ -21,9 +21,11 @@ const [error,setError] = useState("")
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value;
     console.table(email, password);
     try {
-      createUser(email, password);
+      await createUser(email, password);
+      await updateUserProfile(name);
     } catch (err) {
       Swal.fire({
         position: "top-center",
