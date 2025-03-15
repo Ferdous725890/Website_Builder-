@@ -11,6 +11,7 @@ import { setLoading } from "../features/loadingSlice";
 import auth from "../firebase/firebase.config";
 import { createContext, useEffect } from "react";
 import { addUser } from "../features/userSlice";
+import axios from "axios";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const currentUserInStore = useSelector((state) => state.userReducer.email);
@@ -35,8 +36,18 @@ const AuthProvider = ({ children }) => {
     createUser,
   };
 
-  useEffect(() => {
+  useEffect( () => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      // For Set Database
+      const name = currentUser?.displayName;
+      const email = currentUser?.email;
+      try {
+        const resDatabase = axios.post("/api/users", { name, email });
+        console.log(resDatabase);
+      } catch (error) {
+        console.log(error);
+      }
+      // for Current user Verify
       if (currentUser?.email !== currentUserInStore) {
         dispatch(addUser(currentUser));
       }
