@@ -6,6 +6,7 @@ import "./signup.css";
 import { FiArrowRight, FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
+
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
 
@@ -22,7 +23,7 @@ const SignUP = () => {
     const password = form.password.value;
     console.table(email, password);
     try {
-      createUser(email, password);
+      createUser(email, password)
     } catch (err) {
       console.log(err);
     }
