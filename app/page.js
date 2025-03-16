@@ -2,11 +2,11 @@ import GetStated from "./Component/GetStarted";
 import Category from "./Component/Category";
 import Start from "./Component/Start";
 import AiTools from "./Component/AiTools";
-import AytypeSite from "./Component/AnytypeSite";
+import AnyTypeSite from "./Component/AnyTypeSite";
 
 export default function Home() {
   return (
-    <div className="bg-[#FCCAF2] pt-20 bg-gradient-to-t from-[#ece1e9] to-[#FCCAF2] pb-56">
+    <div className="bg-[#FCCAF2] bg-gradient-to-t from-[#ece1e9] to-[#FCCAF2] pb-10">
       {/* -----------------banner section--------- */}
       <div className="container mx-auto w-11/12">
         <div>
@@ -25,7 +25,7 @@ export default function Home() {
 
           <AiTools></AiTools>
 
-          <AytypeSite></AytypeSite>
+          <AnyTypeSite></AnyTypeSite>
         </div>
       </div>
     </div>
