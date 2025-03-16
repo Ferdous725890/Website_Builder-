@@ -32,7 +32,7 @@ const SignUP = () => {
     }
   };
   return (
-    <div className="text-center  mt-10 space-y-4 px-6 sm:max-w-lg sm:mx-auto sm:space-y-10 ">
+    <div className="text-center  mt-10 mb-10 space-y-4 px-10 sm:max-w-lg sm:mx-auto sm:space-y-10 ">
       <h3 className="text-3xl font-bold leading-10 lg:text-4xl">
         Let s create your BuildMaster Account.
       </h3>
