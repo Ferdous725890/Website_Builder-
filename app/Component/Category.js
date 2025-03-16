@@ -5,8 +5,8 @@ import { FaIdBadge } from "react-icons/fa";
 import { PiCursorClickFill } from "react-icons/pi";
 const Category = () => {
   return (
-    <div className="text-black  container mx-auto w-11/12 pb-10 mt-10">
-      <div className="grid grid-cols-3 gap-4 md:gap-10 md:w-9/12 mx-auto">
+    <div className="text-black  container mx-auto pb-10 mt-10">
+      <div className="grid grid-cols-3 gap-4 md:gap-10 lg:w-9/12 mx-auto">
         {/* 1st div */}
         <div className="rounded-lg cursor-pointer flex justify-center items-center flex-col gap-2 transition-all duration-150 px-4 py-3 bg-[#DFDAFF] hover:bg-[#C2BAF9]">
           <p>

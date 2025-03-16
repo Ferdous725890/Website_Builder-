@@ -7,10 +7,10 @@ const AiTools = () => {
   return (
     <div>
       <div className=" text-black mt-16 container mx-auto w-11/12">
-        <h1 className="text-4xl md:text-7xl md:mb-14 font-bold  text-center mb-5">
+        <h1 className="text-4xl md:text-5xl lg:text-7xl md:mb-14 font-bold  text-center mb-5">
           AI Tools for Faster, <br></br> Smarter Web Creation
         </h1>
-        <div className="flex flex-col md:flex-row justify-between items-start gap-4">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
           <div>
             <Image
               src={ai}
