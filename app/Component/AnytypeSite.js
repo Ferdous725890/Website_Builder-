@@ -33,7 +33,7 @@ const AnyTypeSite = () => {
             <h2 className="text-3xl font-bold"> Dream it. Build it.</h2>
             <div>
               <div className="p-2 my-2 rounded-sm border">
-                <button className="font-bold text-xl flex gap-2 my-2 items-center">
+                <button className="font-bold text-xl cursor-pointer flex gap-2 my-2 items-center">
                   <RiDragDropLine /> Drag & Drop Editing
                 </button>
                 <p className="">
