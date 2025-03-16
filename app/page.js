@@ -1,9 +1,7 @@
-import Image from "next/image";
 import GetStated from "./Component/GetStated";
 import Category from "./Component/Category";
 import Start from "./Component/Start";
 import AiTools from "./Component/AiTools";
-import AllTools from "./Component/AnytypeSite";
 import AytypeSite from "./Component/AnytypeSite";
 
 export default function Home() {
@@ -11,7 +9,6 @@ export default function Home() {
     <div className="bg-[#FCCAF2] pt-20 bg-gradient-to-t from-[#ece1e9] to-[#FCCAF2] pb-56">
       {/* -----------------banner section--------- */}
       <div className="container mx-auto w-11/12">
-        <div></div>
         <div>
           <h2 className="text-7xl font-bold text-black text-center">
             Build Your Website, <br /> Shape Your Future!

@@ -29,21 +29,23 @@ const Navbar = async () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a>Item 1</a>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
+                <Link href="/pick_template">Templates</Link>
               </li>
               <li>
-                <a>Item 3</a>
+                <details>
+                  <summary>Resources</summary>
+                  <ul className="p-2">
+                    <li>
+                      <Link href="/community">Community</Link>
+                    </li>
+                    <li>
+                      <Link href="/blogs">Blogs</Link>
+                    </li>
+                  </ul>
+                </details>
               </li>
             </ul>
           </div>
@@ -54,14 +56,20 @@ const Navbar = async () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-black">
             <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/pick_template">Templates</Link>
+            </li>
+            <li>
               <details>
-                <summary>Parent</summary>
+                <summary>Resources</summary>
                 <ul className="p-2">
                   <li>
-                    <a>Submenu 1</a>
+                    <Link href="/community">Community</Link>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <Link href="/blogs">Blogs</Link>
                   </li>
                 </ul>
               </details>
