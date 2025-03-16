@@ -1,5 +1,5 @@
 import Image from "next/image";
-import GetStated from "./Component/GetStated";
+import GetStated from "./Component/GetStarted";
 import Category from "./Component/Category";
 import Start from "./Component/Start";
 import AiTools from "./Component/AiTools";
@@ -13,11 +13,11 @@ export default function Home() {
       <div className="container mx-auto w-11/12">
         <div></div>
         <div>
-          <h2 className="text-7xl font-bold text-black text-center">
+          <h2 className="text-4xl md:text-7xl font-bold text-black text-center">
             Build Your Website, <br /> Shape Your Future!
           </h2>
           <p className="text-black text-center mt-5">
-            Create, host, and expand your dream website effortlessly with the
+            Create, host, and expand your dream website effortlessly <br></br> with the
             ultimate WordPress platform.
           </p>
 

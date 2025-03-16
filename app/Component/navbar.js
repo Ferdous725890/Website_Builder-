@@ -47,7 +47,7 @@ const Navbar = async () => {
               </li>
             </ul>
           </div>
-          <Link href="/" className="text-black text-xl ">
+          <Link href="/" className="text-black font-bold text-xl ">
             BuildMaster
           </Link>
         </div>
