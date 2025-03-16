@@ -17,10 +17,9 @@ export default function Home() {
             Build Your Website, <br /> Shape Your Future!
           </h2>
           <p className="text-black text-center mt-5">
-            Create, host, and expand your dream website effortlessly <br></br> with the
-            ultimate WordPress platform.
+            Create, host, and expand your dream website effortlessly <br></br>{" "}
+            with the ultimate WordPress platform.
           </p>
-
           <GetStated></GetStated>
           <Category></Category>
           <Start></Start>

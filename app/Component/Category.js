@@ -7,9 +7,10 @@ const Category = () => {
   return (
     <div className="text-black  container mx-auto w-11/12 pb-10 mt-10">
       <div className="grid grid-cols-3 gap-4 md:gap-10 md:w-9/12 mx-auto">
-        <div className="rounded-lg cursor-pointer transition-all duration-150 hover:bg-amber-300 px-4 py-3 bg-[#C2BAF9]">
+        {/* 1st div */}
+        <div className="rounded-lg cursor-pointer flex justify-center items-center flex-col gap-2 transition-all duration-150 px-4 py-3 bg-[#DFDAFF] hover:bg-[#C2BAF9]">
           <p>
-            <PiCursorClickFill className="text-[25px] text-[#f31cc8]" />
+            <PiCursorClickFill className="text-[25px] text-black" />
           </p>
           <h1 className="text-lg font-medium md:text-2xl mb-2">Build</h1>
           <p className="hidden md:block">
@@ -17,8 +18,10 @@ const Category = () => {
             customization options.
           </p>
         </div>
-        <div className="px-4 py-3 cursor-pointer transition-all duration-150 hover:bg-amber-300 rounded-lg  bg-[#DFDAFF]">
-          <CgGhost className="text-[25px] text-[#f31cc8]" />
+
+        {/* 2nd div */}
+        <div className="px-4 py-3 cursor-pointer flex justify-center items-center flex-col transition-all duration-150 rounded-lg bg-[#DFDAFF] hover:bg-[#C2BAF9]">
+          <CgGhost className="text-[25px] text-black" />
           <h1 className="text-lg font-medium md:text-2xl mb-2 mt-1">Host</h1>
 
           <p className="hidden md:block">
@@ -26,9 +29,13 @@ const Category = () => {
             smoothly.
           </p>
         </div>
-        <div className="px-4 py-3 cursor-pointer transition-all duration-150 hover:bg-amber-300 rounded-lg  bg-[#C2BAF9]">
-          <FaIdBadge className="text-[25px] text-[#f31cc8]" />
-          <h2 className="text-lg font-medium md:text-2xl mb-2 mt-1">Generated With Ai</h2>
+
+        {/* 3rd div */}
+        <div className="px-4 py-3 cursor-pointer flex justify-center items-center flex-col transition-all duration-150 rounded-lg bg-[#DFDAFF]  hover:bg-[#C2BAF9]">
+          <FaIdBadge className="text-[25px] text-black" />
+          <h2 className="text-lg font-medium md:text-2xl mb-2 mt-1">
+            Generated With Ai
+          </h2>
 
           <p className="hidden md:block">
             Smart AI-powered solutions to enhance and optimize your website
