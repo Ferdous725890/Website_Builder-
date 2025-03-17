@@ -50,16 +50,6 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // For Set Database
-      const name = currentUser?.displayName;
-      const email = currentUser?.email;
-      try {
-        const resDatabase = axios.post("/api/users", { name, email });
-        console.log(resDatabase);
-      } catch (error) {
-        console.log(error);
-      }
-      // for Current user Verify
       if (currentUser && currentUser?.email) {
         setUser(currentUser);
       }
