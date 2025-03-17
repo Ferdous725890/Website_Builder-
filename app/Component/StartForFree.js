@@ -1,16 +1,18 @@
-import Button from 'daisyui/components/button';
-import React from 'react';
+import Button from "daisyui/components/button";
+import Link from "next/link";
+import React from "react";
 
 const StartForFree = () => {
-    return (
-       <div className='mt-3'>
-        <button>
-        <p className='bg-black px-5 py-2 text-white '>
-            Start For Free
-        </p>
-        </button>
-       </div>
-    );
+  return (
+    <div className="">
+      <Link
+        href="/sign-up"
+        className="bg-black text-white transition-colors hover:bg-[#545454] font-bold rounded-sm px-5 py-3"
+      >
+        Start for free
+      </Link>
+    </div>
+  );
 };
 
 export default StartForFree;
