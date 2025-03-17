@@ -1,8 +1,9 @@
-import GetStated from "./Component/GetStarted";
+import Image from "next/image";
+import GetStarted from "./Component/GetStarted";
 import Category from "./Component/Category";
 import Start from "./Component/Start";
 import AiTools from "./Component/AiTools";
-import AnyTypeSite from "./Component/AnyTypeSite";
+import AnyTypeSite from "./Component/AnytypeSite";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
               with the ultimate WordPress platform.
             </p>
           </div>
-          <GetStated></GetStated>
+          <GetStarted />
           <Category></Category>
           <Start></Start>
 
