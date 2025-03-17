@@ -6,6 +6,7 @@ import "./signup.css";
 import { FiArrowRight, FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
+import Image from "next/image";
 
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
@@ -24,7 +25,8 @@ const SignUP = () => {
     const name = form.name.value;
     console.table(email, password);
     try {
-      createUser(email, password);
+      await createUser(email, password);
+      updateUserProfile(name);
     } catch (err) {
       Swal.fire({
         position: "top-center",
