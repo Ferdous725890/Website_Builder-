@@ -13,6 +13,7 @@ import { setLoading } from "../features/loadingSlice";
 import auth from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
 import { addUser } from "../features/userSlice";
+import axios from "axios";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -55,8 +56,18 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser && currentUser?.email) {
-        setUser(currentUser);
+      // For Set Database
+      const name = currentUser?.displayName;
+      const email = currentUser?.email;
+      try {
+        const resDatabase = axios.post("/api/users", { name, email });
+        console.log(resDatabase);
+      } catch (error) {
+        console.log(error);
+      }
+      // for Current user Verify
+      if (currentUser?.email !== currentUserInStore) {
+        dispatch(addUser(currentUser));
       }
       setLoading(false);
     });

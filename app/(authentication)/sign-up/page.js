@@ -6,10 +6,10 @@ import "./signup.css";
 import { FiArrowRight, FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
-import Image from "next/image";
+
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
-const [error,setError] = useState("")
+  const [error, setError] = useState("");
   const { googleSignIn, createUser, updateUserProfile } = useAuth();
 
   const handleGoogleSignIn = () => {
@@ -24,19 +24,18 @@ const [error,setError] = useState("")
     const name = form.name.value;
     console.table(email, password);
     try {
-      await createUser(email, password);
-      await updateUserProfile(name);
+      createUser(email, password);
     } catch (err) {
       Swal.fire({
         position: "top-center",
         icon: "error",
         title: err.message,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
     }
   };
-  
+
   return (
     <div className="text-center  mt-10 mb-10 space-y-4 px-10 sm:max-w-lg sm:mx-auto sm:space-y-10 ">
       <h3 className="text-3xl font-bold leading-10 lg:text-4xl">
