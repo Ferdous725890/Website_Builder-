@@ -6,11 +6,12 @@ import "./signup.css";
 import { FiArrowRight, FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
+import Image from "next/image";
 
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
-
-  const { googleSignIn, createUser } = useAuth();
+  const [error, setError] = useState("");
+  const { googleSignIn, createUser, updateUserProfile } = useAuth();
 
   const handleGoogleSignIn = () => {
     googleSignIn();
@@ -21,17 +22,26 @@ const SignUP = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value;
     console.table(email, password);
     try {
-      createUser(email, password)
+      await createUser(email, password);
+      updateUserProfile(name);
     } catch (err) {
-      console.log(err);
+      Swal.fire({
+        position: "top-center",
+        icon: "error",
+        title: err.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
+
   return (
-    <div className="text-center  mt-10 space-y-4 px-6 sm:max-w-lg sm:mx-auto sm:space-y-10 ">
+    <div className="text-center  mt-10 mb-10 space-y-4 px-10 sm:max-w-lg sm:mx-auto sm:space-y-10 ">
       <h3 className="text-3xl font-bold leading-10 lg:text-4xl">
-        Let's create your BuildMaster Account.
+        Let&apos;s create your BuildMaster Account.
       </h3>
       <p className="text-gray-700  text-xl">
         Join our community and start building your dream website without any
@@ -39,6 +49,18 @@ const SignUP = () => {
       </p>
       <div>
         <form onSubmit={handleSubmit} className="space-y-6 text-left grid">
+          <div className="relative">
+            <input
+              name="name"
+              required
+              type="text"
+              className="border border-gray-200 w-full pt-4 pb-2 px-4 outline-none rounded-sm"
+              placeholder=" "
+            />
+            <label className="absolute top-1/2 left-4 -translate-y-1/2 transition-all duration-200 pointer-events-none text-gray-400">
+              Name
+            </label>
+          </div>
           <div className="relative">
             <input
               name="email"
@@ -70,6 +92,7 @@ const SignUP = () => {
               Password
             </label>
           </div>
+          <p className="text-red-500 font-medium">{error}</p>
           <button
             type="submit"
             className="group border flex items-center justify-center gap-2 border-gray-200 py-3 cursor-pointer text-white bg-black/80 rounded-sm"
@@ -99,7 +122,7 @@ const SignUP = () => {
         className="border border-gray-200 hover:bg-gray-50 active:scale-80 transition-all duration-200 rounded-sm  w-full py-2 cursor-pointer"
       >
         <div className="flex items-center justify-center gap-4">
-          <img src="/google.png" height={30} width={30} />
+          <Image src="/google.png" height={30} width={30} alt="google" />
           <span className="text-lg font-medium text-gray-700">
             Continue with google
           </span>
