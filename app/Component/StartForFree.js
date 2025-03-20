@@ -1,4 +1,3 @@
-import Button from "daisyui/components/button";
 import Link from "next/link";
 import React from "react";
 
