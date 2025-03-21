@@ -26,7 +26,7 @@ const SignUP = () => {
     console.table(email, password);
     try {
       await createUser(email, password);
-      updateUserProfile(name);
+      await updateUserProfile(name);
     } catch (err) {
       Swal.fire({
         position: "top-center",
