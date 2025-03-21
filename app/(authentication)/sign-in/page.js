@@ -19,7 +19,7 @@ const SignIn = () => {
     const email = form.email.value;
     const password = form.password.value;
     try {
-      signInUser(email, password);
+      await signInUser(email, password);
     } catch (err) {
       console.log(err);
     }

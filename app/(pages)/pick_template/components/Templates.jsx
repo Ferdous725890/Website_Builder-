@@ -1,14 +1,11 @@
 "use client";
-import { useAuth } from "@/app/hooks/useAuth";
-import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import TemplateCard from "./TemplatesCard";
 const Templates = () => {
   const [templates, setTemplates] = useState([]);
-  const { user } = useAuth();
 
   useEffect(() => {
-    fetch("https://portfolio-server-rho-woad.vercel.app/templates")
+    fetch("https://build-master-server.vercel.app/templates")
       .then((res) => res.json())
       .then((data) => {
         setTemplates(data);
@@ -32,42 +29,7 @@ const Templates = () => {
             </p>
           </div>
           {templates.map((template) => (
-            <div
-              key={template._id}
-              className="p-4 bg-white rounded-xl hover:shadow-2xl"
-            >
-              <img
-                className="rounded-xl"
-                src={template.img}
-                alt={template.title}
-              />
-              {/* <Image src={template.img} width={100} height={100} alt={template.title}/> */}
-              <h3 className="text-2xl font-semibold mt-4">{template.title}</h3>
-              <p className="text-xl text-red-600">{template.use}</p>
-              {user ? (
-                <div className="grid grid-cols-3 gap-3 mt-4">
-                  <Link
-                    className="rounded-xl text-center py-3 bg-gray-200 font-medium"
-                    href={"/"}
-                  >
-                    Preview
-                  </Link>
-                  <Link
-                    className="col-span-2 py-3 bg-[#FFA8EE] rounded-xl font-medium text-center"
-                    href={"/"}
-                  >
-                    Add Project
-                  </Link>
-                </div>
-              ) : (
-                <Link
-                  className="w-full mt-4 py-3 bg-[#FFA8EE] rounded-xl font-medium"
-                  href={"/"}
-                >
-                  Click to edit
-                </Link>
-              )}
-            </div>
+            <TemplateCard key={template._id} template={template}></TemplateCard>
           ))}
         </div>
       ) : (
