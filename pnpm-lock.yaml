@@ -17,9 +17,6 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.0.13
         version: 4.0.14(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.3))
-      autoprefixer:
-        specifier: ^10.4.21
-        version: 10.4.21(postcss@8.5.3)
       axios:
         specifier: ^1.8.3
         version: 1.8.3
@@ -60,6 +57,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.0.14
         version: 4.0.14
+      autoprefixer:
+        specifier: ^10.4.21
+        version: 10.4.21(postcss@8.5.3)
       eslint:
         specifier: ^9
         version: 9.22.0(jiti@2.4.2)
