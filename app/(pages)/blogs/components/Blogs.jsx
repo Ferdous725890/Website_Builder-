@@ -17,11 +17,17 @@ const Blogs = () => {
 
   return (
     <div>
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
-        {blogs.map((blog) => (
-          <BlogCard key={blog._id} blog={blog}></BlogCard>
-        ))}
-      </div>
+      {blogs.length > 0 ? (
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
+          {blogs.map((blog) => (
+            <BlogCard key={blog._id} blog={blog}></BlogCard>
+          ))}
+        </div>
+      ) : (
+        <div className="flex justify-center mt-20">
+          <span className="loading loading-bars loading-lg "></span>
+        </div>
+      )}
     </div>
   );
 };
