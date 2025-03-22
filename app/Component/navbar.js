@@ -49,7 +49,7 @@ const Navbar = async () => {
               </li>
             </ul>
           </div>
-          <Link href="/" className="text-black text-xl ">
+          <Link href="/" className="text-black font-bold text-xl ">
             BuildMaster
           </Link>
         </div>
@@ -77,7 +77,7 @@ const Navbar = async () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link href="/sign-in" className="mr-5 text-black">
+          <Link href="/sign-in" className="mr-5 hidden md:block text-black">
             LogIn
           </Link>
           <Link href="/sign-up" className="bg-[#FFA8EE] py-2 px-3 text-black">

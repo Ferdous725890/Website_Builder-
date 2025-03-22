@@ -28,6 +28,7 @@ const Blogs = () => {
           <span className="loading loading-bars loading-lg "></span>
         </div>
       )}
+
     </div>
   );
 };

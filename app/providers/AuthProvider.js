@@ -8,18 +8,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { setLoading } from "../features/loadingSlice";
-import auth from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
-import { addUser } from "../features/userSlice";
+import axios from "axios";
+import auth from "../firebase/firebase.config";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // const currentUserInStore = useSelector((state) => state.userReducer.email);
-  // const user = useSelector((state) => state.userReducer);
-  // const loading = useSelector((state) => state.loadingReducer);
   const dispatch = useDispatch();
   const googleProvider = new GoogleAuthProvider();
 

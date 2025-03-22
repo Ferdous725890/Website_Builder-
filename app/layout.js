@@ -25,11 +25,13 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="light">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        cz-shortcut-listen="true"
       >
         <ReduxProvider>
           <AuthProvider>
-            <Navbar></Navbar>
-
+            <div className="sticky top-0 z-10">
+              <Navbar></Navbar>
+            </div>
             <div className="min-h-[calc(100vh-8rem)] h-full">{children}</div>
             <Footer></Footer>
           </AuthProvider>
