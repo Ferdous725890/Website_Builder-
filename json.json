@@ -8,12 +8,12 @@
       {
         "step": 1,
         "title": "AVIF",
-        "details": "Known for its exceptional compression and high-quality output, AVIF is ideal for high-resolution visuals. It supports features like transparency, animation, HDR, and 10-bit/12-bit colors. However, it takes longer to encode and decode, and not all browsers fully support it yet."
+        "description": "Known for its exceptional compression and high-quality output, AVIF is ideal for high-resolution visuals. It supports features like transparency, animation, HDR, and 10-bit/12-bit colors. However, it takes longer to encode and decode, and not all browsers fully support it yet."
       },
       {
         "step": 2,
         "title": "WebP",
-        "details": "Developed by Google, WebP provides a good balance between file size and quality. It supports both lossy and lossless compression, making it versatile for various applications. WebP is more widely supported by browsers and offers faster loading times"
+        "description": "Developed by Google, WebP provides a good balance between file size and quality. It supports both lossy and lossless compression, making it versatile for various applications. WebP is more widely supported by browsers and offers faster loading times"
       }
     ],
     "resources": [
