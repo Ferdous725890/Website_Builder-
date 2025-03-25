@@ -7,6 +7,7 @@ const page = () => {
   return (
     <PrivateRoute>
       <div className="flex">
+        <h3>Hello world</h3>
         <Sidebar />
         <Editor />
       </div>

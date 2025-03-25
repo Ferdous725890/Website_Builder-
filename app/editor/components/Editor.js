@@ -31,8 +31,13 @@ export const Editor = () => {
       Editor
       <div className="editor">
         {headings.map((heading) => (
-          <div key={heading.id}>
-            {/* {editingHeadingId === heading.id ? (
+          <div
+            key={heading.id}
+            onClick={() => dispatch(selectHeading(heading.id))}
+            onDoubleClick={() => handleDoubleClick(heading.id, heading.text)}
+            onKeyDown={(e) => console.log(e.key)}
+          >
+            {editingHeadingId === heading.id ? (
               <input
                 type="text"
                 value={editingText}
@@ -42,16 +47,9 @@ export const Editor = () => {
                 autoFocus
                 className="text-3xl font-bold border outline-none border-blue-500 w-full block"
               />
-            ) : ( */}
-            <h1
-              onClick={() => dispatch(selectHeading(heading.id))}
-              onDoubleClick={() => handleDoubleClick(heading.id, heading.text)}
-              onKeyDown={(e) => console.log(e.key)}
-              contentEditable="true"
-              className="text-3xl font-bold outline-none border border-gray-300"
-            >
-              {heading.text}
-            </h1>
+            ) : (
+              <h1 className="text-3xl font-bold">{heading.text}</h1>
+            )}
           </div>
         ))}
       </div>
