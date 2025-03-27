@@ -28,13 +28,15 @@ const SignUP = () => {
       await createUser(email, password);
       updateUserProfile(name);
     } catch (err) {
-      Swal.fire({
-        position: "top-center",
-        icon: "error",
-        title: err.message,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      console.log(err.message);
+      
+      // Swal.fire({
+      //   position: "top-center",
+      //   icon: "error",
+      //   title: err.message,
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      // });
     }
   };
 

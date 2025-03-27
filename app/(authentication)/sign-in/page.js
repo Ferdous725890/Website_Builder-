@@ -8,24 +8,30 @@ import { FiArrowRight, FiEye, FiEyeOff } from "react-icons/fi";
 
 const SignIn = () => {
   const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState(""); // Add state for error messages
   const { googleSignIn, signInUser } = useAuth();
 
   const handleGoogleSignIn = () => {
     googleSignIn();
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    setError(""); // Reset error message
+
     try {
       await signInUser(email, password);
     } catch (err) {
+      setError(err.message); // Display the error (e.g., lockout or invalid credentials)
       console.log(err);
     }
   };
+
   return (
-    <div className="text-center mt-10 space-y-4 px-10 sm:max-w-lg sm:mx-auto sm:space-y-10 ">
+    <div className="text-center mt-10 space-y-4 px-10 sm:max-w-lg sm:mx-auto sm:space-y-10">
       <h3 className="text-3xl font-bold leading-10 lg:text-4xl">
         Sign in to your BuildMaster account
       </h3>
@@ -63,6 +69,7 @@ const SignIn = () => {
               Password
             </label>
           </div>
+          {error && <p className="text-red-500 text-sm">{error}</p>} {/* Display error */}
           <button
             type="submit"
             className="group border flex items-center justify-center gap-2 border-gray-200 py-3 cursor-pointer text-white bg-black/80 rounded-sm"
@@ -81,7 +88,6 @@ const SignIn = () => {
           <span className="text-blue-500 underline">Create an account</span>
         </Link>
       </p>
-      {/* or */}
       <div className="flex items-center gap-4 justify-center">
         <div className="border-b border-gray-200 h-1 w-1/2"></div>
         <span className="text-gray-400">OR</span>
@@ -89,16 +95,17 @@ const SignIn = () => {
       </div>
       <button
         onClick={handleGoogleSignIn}
-        className="border border-gray-200 hover:bg-gray-50 active:scale-80 transition-all duration-200 rounded-sm  w-full py-2 cursor-pointer"
+        className="border border-gray-200 hover:bg-gray-50 active:scale-80 transition-all duration-200 rounded-sm w-full py-2 cursor-pointer"
       >
         <div className="flex items-center justify-center gap-4">
           <Image src="/google.png" height={30} width={30} alt="google" />
           <span className="text-lg font-medium text-gray-700">
-            Continue with google
+            Continue with Google
           </span>
         </div>
       </button>
     </div>
   );
 };
+
 export default SignIn;

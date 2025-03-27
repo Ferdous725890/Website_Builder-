@@ -16,17 +16,17 @@ const page = () => {
           tips and share your ideas
         </p>
         <div className="flex gap-3">
-          <Link href={"/"}>
+          <Link href={"https://discord.gg/rwy3bQk8"}>
             <button className="flex items-center gap-1  p-2 w-full bg-white rounded-xl hover:shadow-2xl">
               <LiaDiscord /> Discord
             </button>
           </Link>
-          <Link href={"/"}>
+          <Link href={"https://x.com/BuildMaster00"}>
             <button className="flex items-center gap-1  p-2 w-full bg-white rounded-xl hover:shadow-2xl">
               <FaXTwitter /> Twitter/X
             </button>
           </Link>
-          <Link href={"/"}>
+          <Link href={"https://www.youtube.com/channel/UCgiKuJCjtDC_7DZnp9RAkVQ"}>
             <button className="flex items-center gap-1  p-2 w-full bg-white rounded-xl hover:shadow-2xl">
               <FiYoutube />
               Youtube
