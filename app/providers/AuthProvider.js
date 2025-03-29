@@ -8,17 +8,25 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { useDispatch } from "react-redux";
 import { createContext, useEffect, useState } from "react";
+import axios from "axios";
 import auth from "../firebase/firebase.config";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [failedAttempts, setFailedAttempts] = useState({});
-  const [lockoutUntil, setLockoutUntil] = useState({});
+  const dispatch = useDispatch();
   const googleProvider = new GoogleAuthProvider();
+  const [users, setUsers] = useState([]);
+  const [failedAttempts, setFailedAttempts] = useState({});
 
+  useEffect(() => {
+    axios.get("http://localhost:5000/users").then(({ data }) => {
+      setUsers(data);
+    });
+  }, []);
   const MAX_ATTEMPTS = 3; // Max failed attempts before lockout
   const LOCKOUT_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
@@ -31,13 +39,15 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+  // console.log(,failedAttempts);
 
   const signInUser = async (email, password) => {
     setLoading(true);
+    const userFind = users.find((usr) => usr?.email === email);
 
     // Check if the account is locked
-    const lockoutTime = lockoutUntil[email];
-    if (lockoutTime && Date.now() < lockoutTime) {
+    const lockoutTime = userFind?.duration;
+    if (userFind && Date.now() < lockoutTime) {
       setLoading(false);
       throw new Error(
         `Account is locked. Try again after ${Math.ceil(
@@ -45,12 +55,15 @@ const AuthProvider = ({ children }) => {
         )} minutes.`
       );
     }
+    else if(userFind && Date.now() > lockoutTime){
+      axios.delete(`http://localhost:5000/users/${userFind._id}`)
+      .then(res => {
+        console.log(res.data); 
+      })
+    }
 
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      // Reset failed attempts on successful login
-      setFailedAttempts((prev) => ({ ...prev, [email]: 0 }));
-      setLockoutUntil((prev) => ({ ...prev, [email]: null }));
       return result;
     } catch (err) {
       // Increment failed attempts
@@ -59,10 +72,12 @@ const AuthProvider = ({ children }) => {
 
       // Lock the account if max attempts reached
       if (attempts >= MAX_ATTEMPTS) {
-        setLockoutUntil((prev) => ({
-          ...prev,
-          [email]: Date.now() + LOCKOUT_DURATION,
-        }));
+        const userInfo = {
+          email: email,
+          duration: Date.now() + LOCKOUT_DURATION,
+          failedAttempt: 0
+        };
+        axios.post("http://localhost:5000/users", userInfo);
         throw new Error(
           `Too many failed attempts. Account locked for ${
             LOCKOUT_DURATION / 60000
@@ -93,8 +108,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     updateUserProfile,
     signOutUser,
-    failedAttempts,
-    lockoutUntil,
+    failedAttempts
   };
 
   useEffect(() => {
