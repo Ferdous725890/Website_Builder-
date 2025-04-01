@@ -13,6 +13,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import auth from "../firebase/firebase.config";
 import useFailedAttempts from "../getByTanstack/useFailedAttempts";
+import useUsers from "../getByTanstack/useUsers";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
@@ -20,17 +21,8 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const googleProvider = new GoogleAuthProvider();
-  const [users, setUsers] = useState([]);
-  const [failedAttempts, refetch] = useFailedAttempts([])
-  const [count,setCount] = useState(0)
-  const [count2,setCount2] = useState(0)
-  console.log(failedAttempts);
-  
-  useEffect(() => {
-    axios.get("http://localhost:5000/users").then(({ data }) => {
-      setUsers(data);
-    });
-  }, [count]);
+  const [users, refetchUser] = useUsers([]);
+  const [failedAttempts, refetchAttempts] = useFailedAttempts([]);
 
   const maxAttempts = 3; // Max failed attempts before lockout
   const lockoutDuration = 5 * 60 * 1000; // 5 minutes in milliseconds
@@ -44,13 +36,12 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-  // console.log(,failedAttempts);
 
   const signInUser = async (email, password) => {
     setLoading(true);
     const userFind = users.find((usr) => usr?.email === email);
-    const attemptsFind = failedAttempts.find((failedAttempt) => failedAttempt?.email === email);
-    
+    const attemptsFind = failedAttempts.find(
+      (failedAttempt) => failedAttempt?.email === email);
 
     // Check if the account is locked
     const lockoutTime = userFind?.duration;
@@ -61,31 +52,39 @@ const AuthProvider = ({ children }) => {
           (lockoutTime - Date.now()) / 60000
         )} minutes.`
       );
-    }
-    else if(userFind && Date.now() > lockoutTime){
-      axios.delete(`http://localhost:5000/users/${userFind._id}`)
+    } else if (userFind && Date.now() > lockoutTime) {
+      axios.delete(`http://localhost:5000/users/${userFind._id}`);
     }
 
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      if(attemptsFind){
-        axios.delete(`http://localhost:5000/failedAttempts/${attemptsFind._id}`)
+      if (attemptsFind) {
+        axios.delete(
+          `http://localhost:5000/failedAttempts/${attemptsFind._id}`
+        );
       }
       return result;
     } catch (err) {
       // Increment failed attempts
       const attemptsInfo = {
         email: email,
-        attempts: 1
+        attempts: 1,
+      };
+      if (attemptsFind) {
+        axios
+          .patch(`http://localhost:5000/failedAttempts/${email}`)
+          .then((res) => {
+            refetchAttempts();
+          });
+      } else {
+        axios
+          .post("http://localhost:5000/failedAttempts", attemptsInfo)
+          .then((res) => {
+            console.log(res);
+            refetchAttempts();
+          });
       }
-      if(attemptsFind){
-        axios.patch(`http://localhost:5000/failedAttempts/${email}`)
-      }
-      else{
-        axios.post("http://localhost:5000/failedAttempts",attemptsInfo)
-      }
-      refetch()
-      const attempts = attemptsFind?.attempts || 0
+      const attempts = attemptsFind?.attempts || 0;
 
       // Lock the account if max attempts reached
       if (attempts >= maxAttempts) {
@@ -94,7 +93,7 @@ const AuthProvider = ({ children }) => {
           duration: Date.now() + lockoutDuration,
         };
         axios.post("http://localhost:5000/users", userInfo);
-        setCount(count + 1)
+        refetchUser();
         throw new Error(
           `Too many failed attempts. Account locked for ${
             lockoutDuration / 60000
@@ -125,7 +124,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     updateUserProfile,
     signOutUser,
-    failedAttempts
+    failedAttempts,
   };
 
   useEffect(() => {
