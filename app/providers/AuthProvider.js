@@ -41,28 +41,27 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     const userFind = users.find((usr) => usr?.email === email);
     const attemptsFind = failedAttempts.find(
-      (failedAttempt) => failedAttempt?.email === email);
+      (failedAttempt) => failedAttempt?.email === email
+    );
 
     // Check if the account is locked
     const lockoutTime = userFind?.duration;
-    if (userFind && Date.now() < lockoutTime) {
-      setLoading(false);
-      throw new Error(
-        `Account is locked. Try again after ${Math.ceil(
-          (lockoutTime - Date.now()) / 60000
-        )} minutes.`
-      );
-    } else if (userFind && Date.now() > lockoutTime) {
-      axios.delete(`http://localhost:5000/users/${userFind._id}`);
+    if (userFind) {
+      if (Date.now() < lockoutTime) {
+        setLoading(false);
+        throw new Error(
+          `Account is locked. Try again after ${Math.ceil(
+            (lockoutTime - Date.now()) / 60000
+          )} minutes.`
+        );
+      } else {
+        await axios.delete(`http://localhost:5000/users/${userFind?._id}`);
+      }
     }
-
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      if (attemptsFind) {
-        axios.delete(
-          `http://localhost:5000/failedAttempts/${attemptsFind._id}`
-        );
-      }
+      await axios.delete(`http://localhost:5000/failedAttempts/${email}`);
+      refetchAttempts();
       return result;
     } catch (err) {
       // Increment failed attempts
@@ -80,20 +79,23 @@ const AuthProvider = ({ children }) => {
         axios
           .post("http://localhost:5000/failedAttempts", attemptsInfo)
           .then((res) => {
-            console.log(res);
             refetchAttempts();
           });
       }
-      const attempts = attemptsFind?.attempts || 0;
+      const attempts = attemptsFind?.attempts || 1;
 
       // Lock the account if max attempts reached
       if (attempts >= maxAttempts) {
+        await axios.delete(`http://localhost:5000/failedAttempts/${email}`);
+        refetchAttempts();
         const userInfo = {
           email: email,
           duration: Date.now() + lockoutDuration,
         };
-        axios.post("http://localhost:5000/users", userInfo);
-        refetchUser();
+        axios.post("http://localhost:5000/users", userInfo).then((res) => {
+          refetchUser();
+        });
+
         throw new Error(
           `Too many failed attempts. Account locked for ${
             lockoutDuration / 60000
