@@ -27,6 +27,13 @@ export default function Page() {
     setGreeting(message);
   };
 
+  const copyToClipboard = async () => {
+    if (greeting) {
+      await navigator.clipboard.writeText(greeting);
+      alert("শুভেচ্ছা কপি হয়েছে!");
+    }
+  };
+
 
 
   return (
@@ -56,7 +63,7 @@ export default function Page() {
           </div>
           <div className="flex gap-4 mt-4">
             <button
-              
+              onClick={copyToClipboard}
               className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
             >
               Copy
