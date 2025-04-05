@@ -50,6 +50,9 @@ const Navbar =  () => {
                     <li>
                       <Link href="/blogs">Blogs</Link>
                     </li>
+                    <li>
+                      <Link href="/eid_greeting_generator">Greeting Generator</Link>
+                    </li>
                   </ul>
                 </details>
               </li>
@@ -77,6 +80,9 @@ const Navbar =  () => {
                   <li>
                     <Link href="/blogs">Blogs</Link>
                   </li>
+                  <li>
+                      <Link href="/eid_greeting_generator">Greeting Generator</Link>
+                    </li>
                 </ul>
               </details>
             </li>
