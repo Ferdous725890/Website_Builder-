@@ -55,12 +55,12 @@ const AuthProvider = ({ children }) => {
           )} minutes.`
         );
       } else {
-        await axios.delete(`http://localhost:5000/users/${userFind?._id}`);
+        await axios.delete(`https://build-master-server.vercel.app/users/${userFind?._id}`);
       }
     }
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      await axios.delete(`http://localhost:5000/failedAttempts/${email}`);
+      await axios.delete(`https://build-master-server.vercel.app/failedAttempts/${email}`);
       refetchAttempts();
       return result;
     } catch (err) {
@@ -71,13 +71,13 @@ const AuthProvider = ({ children }) => {
       };
       if (attemptsFind) {
         axios
-          .patch(`http://localhost:5000/failedAttempts/${email}`)
+          .patch(`https://build-master-server.vercel.app/failedAttempts/${email}`)
           .then((res) => {
             refetchAttempts();
           });
       } else {
         axios
-          .post("http://localhost:5000/failedAttempts", attemptsInfo)
+          .post("https://build-master-server.vercel.app/failedAttempts", attemptsInfo)
           .then((res) => {
             refetchAttempts();
           });
@@ -86,13 +86,13 @@ const AuthProvider = ({ children }) => {
 
       // Lock the account if max attempts reached
       if (attempts >= maxAttempts) {
-        await axios.delete(`http://localhost:5000/failedAttempts/${email}`);
+        await axios.delete(`https://build-master-server.vercel.app/failedAttempts/${email}`);
         refetchAttempts();
         const userInfo = {
           email: email,
           duration: Date.now() + lockoutDuration,
         };
-        axios.post("http://localhost:5000/users", userInfo).then((res) => {
+        axios.post("https://build-master-server.vercel.app/users", userInfo).then((res) => {
           refetchUser();
         });
 

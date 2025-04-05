@@ -5,7 +5,7 @@ const useFailedAttempts = () => {
   const { data: failedAttempts = [], refetch: refetchAttempts } = useQuery({
     queryKey: ["failedAttempts"],
     queryFn: async () => {
-                    const res = await axios.get(`http://localhost:5000/failedAttempts`)
+                    const res = await axios.get(`https://build-master-server.vercel.app/failedAttempts`)
                     return res.data
     },
   });
