@@ -34,7 +34,25 @@ export default function Page() {
     }
   };
 
+  const downloadCard = () => {
+    if (cardRef.current) {
+      domtoimage.toPng(cardRef.current)
+        .then((dataUrl) => {
+          const link = document.createElement("a");
+          link.download = "eid-greeting.png";
+          link.href = dataUrl;
+          link.click();
+        })
+        .catch((error) => {
+          // console.error("Image download failed!", error);
+          alert("ছবি ডাউনলোড করা যায়নি। আবার চেষ্টা করুন।");
+        });
+    }
+  };
 
+  const shareGreeting = async () => {
+    alert("Sharing functionality coming soon");
+  };
 
   return (
     <main className=" bg-gradient-to-t from-[#ece1e9] to-[#FCCAF2] min-h-screen flex flex-col items-center justify-center p-4">
@@ -69,13 +87,13 @@ export default function Page() {
               Copy
             </button>
             <button
-              
+              onClick={downloadCard}
               className="bg-purple-500 text-white px-3 py-1 rounded hover:bg-purple-600"
             >
               Download
             </button>
             <button
-              
+              onClick={shareGreeting}
               className="bg-pink-500 text-white px-3 py-1 rounded hover:bg-pink-600"
             >
               Share
