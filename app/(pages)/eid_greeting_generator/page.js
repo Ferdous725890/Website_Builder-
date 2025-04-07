@@ -82,19 +82,19 @@ export default function Page() {
           <div className="flex gap-4 mt-4">
             <button
               onClick={copyToClipboard}
-              className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+              className="bg-blue-500 text-white px-3 py-1 rounded cursor-pointer hover:bg-blue-600"
             >
               Copy
             </button>
             <button
               onClick={downloadCard}
-              className="bg-purple-500 text-white px-3 py-1 rounded hover:bg-purple-600"
+              className="bg-purple-500 text-white px-3 py-1 rounded cursor-pointer hover:bg-purple-600"
             >
               Download
             </button>
             <button
               onClick={shareGreeting}
-              className="bg-pink-500 text-white px-3 py-1 rounded hover:bg-pink-600"
+              className="bg-pink-500 text-white px-3 py-1 rounded cursor-pointer hover:bg-pink-600"
             >
               Share
             </button>
