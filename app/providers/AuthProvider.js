@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -118,6 +119,14 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const resetPassword = (email) => {
+    const actionCodeSettings = {
+      url: `${process.env.NEXT_PUBLIC_LiveLink}/sign-in`, // এই URL-টি হবে যেখানে ইউজার রিডাইরেক্ট হবে
+      handleCodeInApp: true, // অ্যাপের মধ্যে কোড হ্যান্ডল করার জন্য
+    };
+      return sendPasswordResetEmail(auth, email, actionCodeSettings);
+
+}
   const authInfo = {
     user,
     loading,
@@ -126,7 +135,9 @@ const AuthProvider = ({ children }) => {
     createUser,
     updateUserProfile,
     signOutUser,
+    resetPassword,
     failedAttempts,
+
   };
 
   useEffect(() => {

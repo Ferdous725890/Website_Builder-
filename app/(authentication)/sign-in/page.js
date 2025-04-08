@@ -10,6 +10,7 @@ const SignIn = () => {
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState(""); // Add state for error messages
   const { googleSignIn, signInUser } = useAuth();
+  const [Email, setEmail] = useState('no email')
 
   const handleGoogleSignIn = () => {
     googleSignIn();
@@ -40,6 +41,7 @@ const SignIn = () => {
         <form onSubmit={handleSubmit} className="space-y-6 text-left grid">
           <div className="relative">
             <input
+              onChange={(e) => setEmail(e.target.value)}
               name="email"
               required
               type="email"
@@ -69,6 +71,9 @@ const SignIn = () => {
               Password
             </label>
           </div>
+          <Link href={`/resetPassword/${Email}`}><p className="underline text-xl text-end">
+            Forgot Password?
+          </p></Link>
           {error && <p className="text-red-500 text-sm">{error}</p>} {/* Display error */}
           <button
             type="submit"
