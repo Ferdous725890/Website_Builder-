@@ -3,20 +3,33 @@ import React from "react";
 import "./resetPassword.css";
 import { FiArrowRight } from "react-icons/fi";
 import { useAuth } from "@/app/hooks/useAuth";
-import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+
 const ResetPassword = ({ Email }) => {
   const { resetPassword,signOutUser } = useAuth();
-  const router = useRouter()
   const handleResetPassword = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     resetPassword(email)
       .then((res) => {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "reset email sent successfully. please check your email and login to our website",
+          showConfirmButton: false,
+          timer: 1500
+        });
         signOutUser();
-        router.push('/sign-in')
-        
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Swal.fire({
+          position: "top-center",
+          icon: "error",
+          title: err.message,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
   };
 
   return (
