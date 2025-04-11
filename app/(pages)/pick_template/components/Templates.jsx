@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import TemplateCard from "./TemplatesCard";
+import TemplateCard from "./TemplateCard";
 const Templates = () => {
   const [templates, setTemplates] = useState([]);
 

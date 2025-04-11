@@ -1,7 +1,13 @@
+"use client"
 import Link from "next/link";
 import React from "react";
+import { useAuth } from "../hooks/useAuth";
 
-const Navbar = async () => {
+const Navbar =  () => {
+  const { user ,signOutUser} = useAuth();
+  const handleSignOut = () => {
+    signOutUser()
+  }
   return (
     <div className="bg-[#FCCAF2]">
       <div className="navbar  container mx-auto w-11/12">
@@ -44,6 +50,9 @@ const Navbar = async () => {
                     <li>
                       <Link href="/blogs">Blogs</Link>
                     </li>
+                    <li>
+                      <Link href="/eid_greeting_generator">Greeting Generator</Link>
+                    </li>
                   </ul>
                 </details>
               </li>
@@ -71,18 +80,35 @@ const Navbar = async () => {
                   <li>
                     <Link href="/blogs">Blogs</Link>
                   </li>
+                  <li>
+                      <Link href="/eid_greeting_generator">Greeting Generator</Link>
+                    </li>
                 </ul>
               </details>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <Link href="/sign-in" className="mr-5 hidden md:block text-black">
-            LogIn
-          </Link>
-          <Link href="/sign-up" className="bg-[#FFA8EE] py-2 px-3 text-black">
-            Get Started
-          </Link>
+          {user ? (
+            <button
+              onClick={handleSignOut}
+              className="bg-[#FFA8EE] py-2 px-3 text-black"
+            >
+              LogOut
+            </button>
+          ) : (
+            <>
+              <Link href="/sign-in" className="mr-5 hidden md:block text-black">
+                LogIn
+              </Link>
+              <Link
+                href="/sign-up"
+                className="bg-[#FFA8EE] py-2 px-3 text-black"
+              >
+                Get Started
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
