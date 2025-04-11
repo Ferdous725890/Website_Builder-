@@ -100,7 +100,7 @@ const SignIn = () => {
       </div>
       <button
         onClick={handleGoogleSignIn}
-        className="border border-gray-200 hover:bg-gray-50 active:scale-80 transition-all duration-200 rounded-sm w-full py-2 cursor-pointer"
+        className="border border-gray-200 hover:bg-gray-50 active:scale-80 transition-all duration-200 rounded-sm w-full py-2 cursor-pointer mb-[80px]"
       >
         <div className="flex items-center justify-center gap-4">
           <Image src="/google.png" height={30} width={30} alt="google" />
