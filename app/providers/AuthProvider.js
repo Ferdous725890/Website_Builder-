@@ -116,13 +116,14 @@ const AuthProvider = ({ children }) => {
 
   const signOutUser = () => {
     setLoading(true);
+    setUser(null)
     return signOut(auth);
   };
 
   const resetPassword = (email) => {
     const actionCodeSettings = {
-      url: `${process.env.NEXT_PUBLIC_LiveLink}/sign-in`, // এই URL-টি হবে যেখানে ইউজার রিডাইরেক্ট হবে
-      handleCodeInApp: true, // অ্যাপের মধ্যে কোড হ্যান্ডল করার জন্য
+      url: `${process.env.NEXT_PUBLIC_LiveLink}/sign-in`,
+      handleCodeInApp: true,
     };
       return sendPasswordResetEmail(auth, email, actionCodeSettings);
 

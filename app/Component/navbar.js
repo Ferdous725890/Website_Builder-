@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 import { useAuth } from "../hooks/useAuth";
 
-const Navbar =  () => {
-  const { user ,signOutUser} = useAuth();
+const Navbar = () => {
+  const { user, signOutUser } = useAuth();
   const handleSignOut = () => {
     signOutUser()
   }
@@ -71,9 +71,9 @@ const Navbar =  () => {
               <Link href="/pick_template">Templates</Link>
             </li>
             <li>
-              <details>
-                <summary>Resources</summary>
-                <ul className="p-2">
+              <div className="dropdown dropdown-center dropdown-hover">
+                <div >Resources⬇️</div>
+                <ul className="dropdown-content menu  rounded-box z-50 w-52 p-2 shadow-sm">
                   <li>
                     <Link href="/community">Community</Link>
                   </li>
@@ -81,10 +81,10 @@ const Navbar =  () => {
                     <Link href="/blogs">Blogs</Link>
                   </li>
                   <li>
-                      <Link href="/eid_greeting_generator">Greeting Generator</Link>
-                    </li>
+                    <Link href="/eid_greeting_generator">Greeting Generator</Link>
+                  </li>
                 </ul>
-              </details>
+              </div>
             </li>
           </ul>
         </div>
