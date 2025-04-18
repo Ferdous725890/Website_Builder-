@@ -54,3 +54,26 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
  │   │   ├── route.js         (GET, POST Users)
  │   │   ├── [id]/route.js    (GET, PUT, DELETE User by ID)
 
+
+
+{
+  "name": "My Website",
+  "userId": "65f123abc456def7890123",
+  "sections": [
+    {
+      "name": "Header Section",
+      "order": 1,
+      "components": [
+        { "type": "text", "content": "Welcome to My Website", "order": 1 },
+        { "type": "button", "content": "Click Here", "order": 2 }
+      ]
+    },
+    {
+      "name": "Image Section",
+      "order": 2,
+      "components": [
+        { "type": "image", "content": "https://example.com/image.jpg", "order": 1 }
+      ]
+    }
+  ]
+}
