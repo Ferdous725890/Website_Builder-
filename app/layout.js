@@ -1,11 +1,10 @@
-"use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ReduxProvider from "./providers/ReduxProvider";
 import AuthProvider from "./providers/AuthProvider";
 import Navbar from "./Component/navbar";
 import Footer from "./Component/footer";
+import ReactQueryProvider from "./providers/ReactQueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +16,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const metadata = {
+  title: "No-Code Website Builder",
+  description: "Create websites easily with drag-and-drop — no coding needed!",
+  keywords: ["No-code", "Website Builder", "Drag and Drop", "Next.js"],
+  // openGraph: {
+  //   title: "No-Code Website Builder",
+  //   description: "Create websites easily with drag-and-drop — no coding needed!",
+  //   url: "https://your-site.vercel.app",
+  //   siteName: "Website Builder",
+  //   images: [
+  //     {
+  //       url: "/og-image.png", // Put this image in the public/ folder
+  //       width: 1200,
+  //       height: 630,
+  //       alt: "No-Code Website Builder",
+  //     },
+  //   ],
+  //   type: "website",
+  // },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   title: "No-Code Website Builder",
+  //   description: "Create websites easily with drag-and-drop — no coding needed!",
+  //   images: ["/og-image.png"],
+  // },
+};
+
 export default function RootLayout({ children }) {
-  const queryClient = new QueryClient();
 
   return (
     <html lang="en" data-theme="light">
@@ -27,7 +52,7 @@ export default function RootLayout({ children }) {
         cz-shortcut-listen="true"
       >
         <ReduxProvider>
-          <QueryClientProvider client={queryClient}>
+          <ReactQueryProvider>
             <AuthProvider>
               <div className="sticky top-0 z-10">
                 <Navbar />
@@ -35,7 +60,7 @@ export default function RootLayout({ children }) {
               <div className="min-h-[calc(100vh-8rem)] h-full">{children}</div>
               <Footer />
             </AuthProvider>
-          </QueryClientProvider>
+          </ReactQueryProvider>
         </ReduxProvider>
       </body>
     </html>
