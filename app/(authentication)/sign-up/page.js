@@ -7,14 +7,40 @@ import { FiArrowRight, FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const SignUP = () => {
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
   const { googleSignIn, createUser, updateUserProfile } = useAuth();
-
+  const router = useRouter()
+  console.log(error);
+  
+  const getPasswordErrors = (password) => {
+    const errors = [];
+  
+    if (password.length < 8) {
+      errors.push("🔴 Password must be at least 8 characters .");
+    }
+    if (!/[A-Z]/.test(password)) {
+      errors.push("🔴 At least one uppercase letter is required.");
+    }
+    if (!/[a-z]/.test(password)) {
+      errors.push("🔴 At least one lowercase letter is required.");
+    }
+    if (!/\d/.test(password)) {
+      errors.push("🔴 At least one number is required.");
+    }
+    if (!/[@$!%*?&#]/.test(password)) {
+      errors.push("🔴 At least one special character is required.");
+    }
+  
+    return errors;
+  };
+  
   const handleGoogleSignIn = () => {
     googleSignIn();
+    router.push('/')
   };
 
   const handleSubmit = async (e) => {
@@ -23,13 +49,20 @@ const SignUP = () => {
     const email = form.email.value;
     const password = form.password.value;
     const name = form.name.value;
-    console.table(email, password);
+    // console.table(email, password);
+    const validationErrors = getPasswordErrors(password);
+    if (validationErrors.length > 0) {
+      setError(validationErrors);
+      return;
+    }
     try {
+      setError("")
       await createUser(email, password);
       updateUserProfile(name);
+      router.push('/')
     } catch (err) {
       console.log(err.message);
-      
+
       // Swal.fire({
       //   position: "top-center",
       //   icon: "error",

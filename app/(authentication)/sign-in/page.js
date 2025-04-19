@@ -3,6 +3,7 @@ import "./signin.css";
 import { useAuth } from "@/app/hooks/useAuth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FiArrowRight, FiEye, FiEyeOff } from "react-icons/fi";
 
@@ -11,7 +12,7 @@ const SignIn = () => {
   const [error, setError] = useState(""); // Add state for error messages
   const { googleSignIn, signInUser } = useAuth();
   const [Email, setEmail] = useState('no email')
-
+const router = useRouter()
   const handleGoogleSignIn = () => {
     googleSignIn();
   };
@@ -24,7 +25,11 @@ const SignIn = () => {
     setError(""); // Reset error message
 
     try {
-      await signInUser(email, password);
+      const res = await signInUser(email, password)
+      if(res){
+        router.push('/')
+      }
+      
     } catch (err) {
       setError(err.message); // Display the error (e.g., lockout or invalid credentials)
       console.log(err);

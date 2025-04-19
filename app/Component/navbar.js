@@ -2,12 +2,16 @@
 import Link from "next/link";
 import React from "react";
 import { useAuth } from "../hooks/useAuth";
+import Image from "next/image";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
   const handleSignOut = () => {
     signOutUser()
   }
+  console.log(user?.photoURL);
+  
   return (
     <div className="bg-[#FCCAF2]">
       <div className="navbar  container mx-auto w-11/12">
@@ -71,9 +75,9 @@ const Navbar = () => {
               <Link href="/pick_template">Templates</Link>
             </li>
             <li>
-              <div className="dropdown dropdown-center dropdown-hover">
-                <div >Resources⬇️</div>
-                <ul className="dropdown-content menu  rounded-box z-50 w-52 p-2 shadow-sm">
+              <div tabIndex={0} className="dropdown dropdown-center dropdown-hover">
+                <p>Resources ⬇️</p>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100  rounded-box z-50 w-52 shadow-sm">
                   <li>
                     <Link href="/community">Community</Link>
                   </li>
@@ -86,16 +90,22 @@ const Navbar = () => {
                 </ul>
               </div>
             </li>
+            {user? <li>
+              <Link href="/dashboard">Dashboard</Link>
+            </li> : ''}
           </ul>
         </div>
         <div className="navbar-end">
           {user ? (
-            <button
+            <div className="flex justify-center items-center gap-2">
+              {user?.photoURL ? <Image width={38} height={0} className="rounded-full" src={user?.photoURL} alt="UserImg"></Image> : <button className="text-2xl font-bold p-2 bg-white rounded-full"><FaUser /></button>}
+              <button
               onClick={handleSignOut}
               className="bg-[#FFA8EE] py-2 px-3 text-black"
             >
               LogOut
             </button>
+            </div>
           ) : (
             <>
               <Link href="/sign-in" className="mr-5 hidden md:block text-black">
