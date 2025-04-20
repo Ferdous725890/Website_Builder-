@@ -59,6 +59,9 @@ const Navbar = () => {
                   </ul>
                 </details>
               </li>
+              {user && <li>
+              <Link href="/dashboard/user/overview">Dashboard</Link>
+            </li> }
             </ul>
           </div>
           <Link href="/" className="text-black font-bold text-xl ">
@@ -89,9 +92,9 @@ const Navbar = () => {
                 </ul>
               </div>
             </li>
-            {user? <li>
-              <Link href="/dashboard">Dashboard</Link>
-            </li> : ''}
+            {user && <li>
+              <Link href="/dashboard/user/overview">Dashboard</Link>
+            </li> }
           </ul>
         </div>
         <div className="navbar-end">

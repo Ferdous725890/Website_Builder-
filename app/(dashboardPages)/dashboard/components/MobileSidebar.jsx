@@ -74,6 +74,14 @@ const MobileSidebar = () => {
                 Recent Projects
               </Link>
             </li>
+            <li>
+            <Link
+              href="/dashboard/user/myProjects"
+              className="block px-2 py-1 hover:bg-gray-200 rounded"
+            >
+              My Projects
+            </Link>
+          </li>
           </ul>
         </div>
       </div>
