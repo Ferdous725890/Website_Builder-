@@ -10,7 +10,6 @@ const Navbar = () => {
   const handleSignOut = () => {
     signOutUser()
   }
-  console.log(user?.photoURL);
   
   return (
     <div className="bg-[#FCCAF2]">

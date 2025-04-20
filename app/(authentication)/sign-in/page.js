@@ -31,8 +31,7 @@ const router = useRouter()
       }
       
     } catch (err) {
-      setError(err.message); // Display the error (e.g., lockout or invalid credentials)
-      console.log(err);
+      setError(err.message);
     }
   };
 

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const metadata = {
+export const metadata = {
   title: "No-Code Website Builder",
   description: "Create websites easily with drag-and-drop — no coding needed!",
   keywords: ["No-code", "Website Builder", "Drag and Drop", "Next.js"],

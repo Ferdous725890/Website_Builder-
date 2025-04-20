@@ -14,7 +14,6 @@ const SignUP = () => {
   const [error, setError] = useState("");
   const { googleSignIn, createUser, updateUserProfile } = useAuth();
   const router = useRouter()
-  console.log(error);
   
   const getPasswordErrors = (password) => {
     const errors = [];
@@ -61,7 +60,7 @@ const SignUP = () => {
       updateUserProfile(name);
       router.push('/')
     } catch (err) {
-      console.log(err.message);
+      setError(err?.message)
 
       // Swal.fire({
       //   position: "top-center",
