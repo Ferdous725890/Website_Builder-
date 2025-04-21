@@ -2,7 +2,7 @@ import React from 'react'
 
 const Activity = () => {
   return (
-    <div>Activity</div>
+    <div className='col-span-2 border'>Activity</div>
   )
 }
 

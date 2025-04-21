@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 export default function Greeting() {
   const [greeting, setGreeting] = useState("");
-  const {user} = useAuth()
+  const { user } = useAuth();
   useEffect(() => {
-    const hour =  new Date().getHours()
+    const hour = new Date().getHours();
 
     if (hour >= 5 && hour < 12) {
       setGreeting("Good Morning 🌞");
@@ -22,8 +22,12 @@ export default function Greeting() {
   return (
     <div className="flex items-center bg-gradient-to-l from-[#ece1e9] to-[#FCCAF2] py-8 px-6 rounded-xl">
       <div>
-      <h1 className="text-2xl md:text-3xl font-bold">{greeting} {user?.displayName}</h1>
-      <p className="md:text-xl mt-3">Here’s what’s been going on with your account throughout the day.</p>
+        <h1 className="text-2xl md:text-3xl font-bold">
+          {greeting} {user?.displayName}
+        </h1>
+        <p className="md:text-xl mt-3">
+          Here’s what’s been going on with your account throughout the day.
+        </p>
       </div>
     </div>
   );
