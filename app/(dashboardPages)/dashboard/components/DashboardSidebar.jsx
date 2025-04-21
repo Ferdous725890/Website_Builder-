@@ -1,23 +1,27 @@
 "use client";
-import { useAuth } from "@/app/hooks/useAuth";
+
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { FaUser } from "react-icons/fa";
+import { useAuth } from "@/app/hooks/useAuth";
 import MobileSidebar from "./MobileSidebar";
 
 const DashboardSidebar = () => {
   const { user } = useAuth();
+
   return (
     <>
+      {/* Desktop Sidebar */}
       <div className="w-72 shadow-sm border border-gray-200 rounded-xl py-4 px-2 hidden lg:block">
+        {/* User Info */}
         <div className="flex items-center gap-3 mb-4">
           {user?.photoURL ? (
             <Image
               width={40}
               height={40}
               className="rounded-full"
-              src={user?.photoURL}
+              src={user.photoURL}
               alt="UserImg"
             />
           ) : (
@@ -30,7 +34,11 @@ const DashboardSidebar = () => {
             <p className="text-sm text-gray-600">{user?.email}</p>
           </div>
         </div>
+
+        {/* Divider */}
         <div className="divider"></div>
+
+        {/* Navigation Links */}
         <ul className="space-y-1 text-gray-800 px-4">
           <li>
             <Link
@@ -66,8 +74,10 @@ const DashboardSidebar = () => {
           </li>
         </ul>
       </div>
+
+      {/* Mobile Sidebar */}
       <div className="lg:hidden">
-        <MobileSidebar></MobileSidebar>
+        <MobileSidebar />
       </div>
     </>
   );
