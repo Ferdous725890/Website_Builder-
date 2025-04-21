@@ -2,7 +2,8 @@ import React from 'react'
 import { FaRegHeart } from 'react-icons/fa';
 import { GrProjects } from "react-icons/gr";
 import { TbEaseInOutControlPoints } from "react-icons/tb";
-import RecentRentals from './RecentRentals';
+import RecentRentals from './RecentProjects';
+import Wishlist from './Wislist';
 
 const Activity = () => {
   return (
@@ -34,6 +35,7 @@ const Activity = () => {
       </div>
       </div>
       <RecentRentals></RecentRentals>
+      <Wishlist></Wishlist>
     </div>
   )
 }
