@@ -6,6 +6,7 @@ import Activity from './components/Activity';
 import UserProfile from './components/UserProfile';
 import RecentProject from './components/RecentProjects';
 import Wishlist from './components/Wislist'; // Make sure the filename is correct (possibly "Wishlist")
+import Notification from './components/Notification';
 
 const Page = () => {
   return (
@@ -19,6 +20,9 @@ const Page = () => {
         {/* Left Column - User Profile */}
         <div className="flex-1">
           <UserProfile />
+          <div className='hidden md:block'>
+          <Notification></Notification>
+          </div>
         </div>
 
         {/* Right Column - Activity, Projects, Wishlist */}
@@ -26,6 +30,9 @@ const Page = () => {
           <Activity />
           <RecentProject />
           <Wishlist />
+          <div className='md:hidden'>
+          <Notification></Notification>
+          </div>
         </div>
       </div>
     </div>

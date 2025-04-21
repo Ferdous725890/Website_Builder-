@@ -5,7 +5,7 @@ import DashboardSidebar from './DashboardSidebar';
 // This layout wraps the dashboard pages with a sidebar and main content area
 const DashboardLayout = ({ children }) => {
   return (
-    <div className="flex gap-4 min-h-screen">
+    <div className="flex gap-0 lg:gap-4 mx-2 min-h-screen">
       {/* Sidebar Section */}
       <DashboardSidebar />
       
