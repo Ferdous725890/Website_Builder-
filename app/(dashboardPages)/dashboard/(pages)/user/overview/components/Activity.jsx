@@ -2,12 +2,10 @@ import React from 'react'
 import { FaRegHeart } from 'react-icons/fa';
 import { GrProjects } from "react-icons/gr";
 import { TbEaseInOutControlPoints } from "react-icons/tb";
-import RecentRentals from './RecentProjects';
-import Wishlist from './Wislist';
+
 
 const Activity = () => {
   return (
-    <div className='flex-2 shadow-xl'>
       <div className='grid grid-cols-2 sm:grid-cols-3 gap-4'>
       <div className='shadow-sm p-4 border-gray-200 border rounded-xl'>
       <div className='flex justify-between items-center'>
@@ -34,9 +32,6 @@ const Activity = () => {
       <p>Points</p>
       </div>
       </div>
-      <RecentRentals></RecentRentals>
-      <Wishlist></Wishlist>
-    </div>
   )
 }
 

@@ -10,7 +10,7 @@ const DashboardSidebar = () => {
   const { user } = useAuth();
   return (
     <>
-      <div className="w-72 shadow-xl py-4 px-2 hidden lg:block">
+      <div className="w-72 shadow-sm border border-gray-200 rounded-xl py-4 px-2 hidden lg:block">
         <div className="flex items-center gap-3 mb-4">
           {user?.photoURL ? (
             <Image
@@ -54,6 +54,14 @@ const DashboardSidebar = () => {
               className="block px-2 py-1 hover:bg-gray-200 rounded"
             >
               My Projects
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/dashboard/user/wishlists"
+              className="block px-2 py-1 hover:bg-gray-200 rounded"
+            >
+              Wishlist
             </Link>
           </li>
         </ul>

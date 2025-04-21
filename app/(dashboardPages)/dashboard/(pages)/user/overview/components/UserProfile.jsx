@@ -8,7 +8,6 @@ import { FaUser } from "react-icons/fa";
 const UserProfile = () => {
   const { user } = useAuth();
   return (
-    <div className="flex-1 ">
       <div className="shadow-sm border border-gray-200 rounded-xl py-8">
         <div className="flex flex-col justify-center items-center gap-1 mb-4">
           {user?.photoURL ? (
@@ -50,7 +49,6 @@ const UserProfile = () => {
           </Link>
         </div>
       </div>
-    </div>
   );
 };
 

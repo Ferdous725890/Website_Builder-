@@ -3,9 +3,9 @@ import DashboardSidebar from './DashboardSidebar';
 const DashboardLayout = ({ children }) => {
                     
   return (
-    <div className="flex min-h-screen">
+    <div className="flex gap-4 min-h-screen">
       <DashboardSidebar />
-      <main className="flex-1 p-4">{children}</main>
+      <main className="flex-1">{children}</main>
     </div>
   );
 }
