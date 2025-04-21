@@ -8,8 +8,8 @@ import { FaUser } from "react-icons/fa";
 const UserProfile = () => {
   const { user } = useAuth();
   return (
-    <div className="shadow-2xl rounded-xl gap-2 py-8">
-      <div className="flex flex-col justify-center items-center mb-4">
+    <div className="flex-1 shadow-2xl rounded-xl  py-8">
+      <div className="flex flex-col justify-center items-center gap-1 mb-4">
         {user?.photoURL ? (
           <Image
             width={70}
