@@ -1,8 +1,11 @@
 import React from 'react'
+import RecentProject from './components/RecentProject'
 
 const page = () => {
   return (
-    <div>Recent Project</div>
+    <div>
+      <RecentProject></RecentProject>
+    </div>
   )
 }
 
