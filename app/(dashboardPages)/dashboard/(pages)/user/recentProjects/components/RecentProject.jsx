@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import React, { useState } from "react";
 import { GrProjects } from "react-icons/gr";
 
@@ -18,6 +19,12 @@ const RecentProject = () => {
             It looks like there are no active projects at the moment. Please
             check back later or create a new one.
           </p>
+          <Link
+          href={'/pick_template'}
+          className="bg-[#FFA8EE] text-center py-2 px-4 rounded-xl text-xl"
+        >
+          Pick a Project
+        </Link>
         </div>
       )}
     </div>
