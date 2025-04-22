@@ -16,7 +16,7 @@ const MobileSidebar = () => {
       {/* Hamburger Menu Button (visible on mobile) */}
       <button
         onClick={() => setIsOpen(true)}
-        className="p-2 text-2xl text-white bg-gray-800 fixed top-20 right-2 sm:right-8 md:right-10 rounded-full z-40"
+        className="p-2 text-2xl text-white bg-gray-800 fixed top-16 right-2 sm:right-8 md:right-10 rounded-full z-40"
       >
         <RxHamburgerMenu />
       </button>

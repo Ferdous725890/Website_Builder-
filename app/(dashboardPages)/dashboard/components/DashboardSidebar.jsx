@@ -72,6 +72,31 @@ const DashboardSidebar = () => {
               Wishlist
             </Link>
           </li>
+          <li>
+            <Link
+              href="/dashboard/user/message"
+              className="block px-2 py-1 hover:bg-gray-200 rounded"
+            >
+              Message
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/dashboard/user/loyaltyAndRewards"
+              className="block px-2 py-1 hover:bg-gray-200 rounded"
+            >
+              loyalty and rewards
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/dashboard/user/setting"
+              className="block px-2 py-1 hover:bg-gray-200 rounded"
+            >
+              Setting
+            </Link>
+          </li>
+          <li>Logout</li>
         </ul>
       </div>
 
