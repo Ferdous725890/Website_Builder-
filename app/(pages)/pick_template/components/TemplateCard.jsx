@@ -16,7 +16,7 @@ const TemplateCard = ({ template }) => {
       use,
       email: user?.email,
     }
-    axios.post('http://localhost:5000/addProjects',projectInfo)
+    axios.post('https://build-master-server.vercel.app/addProjects',projectInfo)
     .then(res => {
       console.log(res.data);
       
