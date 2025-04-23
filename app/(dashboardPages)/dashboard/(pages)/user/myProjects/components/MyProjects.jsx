@@ -18,7 +18,6 @@ const MyProjects = () => {
         });
     }
   }, [user]);
-  console.log(projects);
 
   return (
     <div>
